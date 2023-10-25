@@ -6,7 +6,7 @@ export default function AddRecipe() {
   const [name, setName] = useState<string>("");
   // handle the form submit to /api/selects/recipes
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault();
     const res = await fetch("http://localhost:3000/api/recipes", {
       method: "POST",
@@ -17,6 +17,7 @@ export default function AddRecipe() {
     });
     if (res.ok) {
       console.log("Recipe added successfully!");
+      setName("");
     } else {
       const error = await res.text();
       console.error(`Failed to add recipe: ${error}`);
@@ -30,7 +31,7 @@ export default function AddRecipe() {
   return (
     <form>
       <div>
-        <label className="me-3" htmlFor="name">
+        <label className="me-2" htmlFor="name">
           Add Recipe:
         </label>
         <input

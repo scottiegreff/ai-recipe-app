@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const recipeSchema: Schema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String },
 });
 
-export default mongoose.models.Kinds || mongoose.model("Kinds", recipeSchema);
+export default mongoose.models.Recipe || mongoose.model("Recipe", recipeSchema);
