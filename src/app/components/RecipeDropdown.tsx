@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Recipe from "@/app/types/Recipe";
+import Recipe from "../types/Recipe";
 
 export default function   RecipeDropdown( {data}: {data: Recipe[]} ) {
 

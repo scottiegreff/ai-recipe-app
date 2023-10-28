@@ -22,7 +22,7 @@ function AuthButton() {
         <img
           src={profileImg ?? ""}
           alt="Your Profile Picture"
-          className="h-[50px] w-[50px] rounded-full mx-3"
+          className="w-[50px] h-[50px] rounded-full mx-3"
         />
 
         <button
@@ -41,7 +41,7 @@ function AuthButton() {
       </div>
       <button
         onClick={() => signIn()}
-        className="border-black border px-4 py-1 rounded-md shadow-md  transition-transform transform ease-in duration-500 hover:rounded-lg hover:scale-105"
+        className="border-black border px-4 py-1 rounded-full shadow-md  transition-transform transform ease-in duration-500 hover:rounded-lg hover:scale-105"
       >
         Sign in
       </button>

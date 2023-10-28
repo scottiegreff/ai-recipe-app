@@ -1,6 +1,6 @@
 type Restriction = {
-    _id?: string;
-    restrictionType: string[];
-  };
-// Path: src/app/types/Restriction.ts
+  _id?: string;
+  restrictionType: string[];
+};
+
 export default Restriction;

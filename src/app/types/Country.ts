@@ -1,6 +1,6 @@
 type Country = {
-    _id?: string;
-    countryNames: string[];
-  };
-// Path: src/app/types/Restriction.ts
+  _id?: string;
+  countryNames: string[];
+};
+
 export default Country;
