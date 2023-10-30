@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const countryFlagSchema: Schema = new Schema({
+const prepTimeSchema: Schema = new mongoose.Schema({
   _id: { type: String },
   gptValue: { type: String },
   name: { type: String },
@@ -8,5 +8,5 @@ const countryFlagSchema: Schema = new Schema({
   parent: { type: String },
 });
 
-export default mongoose.models.CountryFlag ||
-  mongoose.model("CountryFlag", countryFlagSchema);
+export default mongoose.models.PrepTime ||
+  mongoose.model("PrepTime", prepTimeSchema);

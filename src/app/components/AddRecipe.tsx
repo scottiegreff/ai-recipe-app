@@ -1,12 +1,11 @@
 "use client";
 import { useState } from "react";
 
-
 export default function AddRecipe() {
   const [name, setName] = useState<string>("");
   // handle the form submit to /api/selects/recipes
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement> ) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const res = await fetch("http://localhost:3000/api/recipes", {
       method: "POST",

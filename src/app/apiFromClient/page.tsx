@@ -10,7 +10,6 @@ export default function APITestPage() {
       .then((data) => setName(data.name));
   }, []);
 
-
   return (
     <div className="m-10">
       <div>

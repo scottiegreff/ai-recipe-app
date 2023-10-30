@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { FaUserAlt } from "react-icons/fa";
 import { GiKnifeFork } from "react-icons/gi";
 
-
 const ACTIVE_ROUTE =
   "py-1 px-2 rounded-full hover:bg-black hover:text-white hover:rounded-lg hover:transition hover:duration-250";
 const INACTIVE_ROUTE =
@@ -54,7 +53,7 @@ export default function NavMenu() {
   return (
     <>
       {/* Nav Container */}
-      <div className="flex justify-between items-center px-20 py-10 ">
+      <div className="flex justify-between items-center px-20 py-[50px] ">
         {/* logo here */}
         <div className="flex items-center">
           <GiKnifeFork className="text-5xl" />
@@ -90,7 +89,7 @@ export default function NavMenu() {
           >
             API From Server
           </Link>
-          
+
           {/* sign in and out button here with avatar */}
           <AuthButton />
         </div>

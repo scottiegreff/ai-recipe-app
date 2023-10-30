@@ -13,8 +13,8 @@ export default function CountryDropdown({ items }: { items: string[] }) {
       setIsLoading(false);
       return;
     } else {
-      console.log("country ITEMZZZZZZZ", items);
-      setCountry(items)
+      // console.log("country ITEMZZZZZZZ", items);
+      setCountry(items);
       setIsLoading(false);
     }
   }, [items]);

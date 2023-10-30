@@ -3,19 +3,20 @@
 import { useState, useEffect } from "react";
 import Recipe from "../types/Recipe";
 
-export default function   RecipeDropdown( {data}: {data: Recipe[]} ) {
-
+export default function RecipeDropdown({ data }: { data: Recipe[] }) {
   const [selectedRecipe, setSelectedRecipe] = useState("");
 
   // const recipeObj = Object.values(data);
-  
+
   useEffect(() => {
     console.log("CHANGED RECIPE NAME", selectedRecipe);
   }, [selectedRecipe]);
 
   return (
     <>
-    <label className="me-2" htmlFor="culture">Recipes:</label>
+      <label className="me-2" htmlFor="culture">
+        Recipes:
+      </label>
       <select
         value={selectedRecipe}
         onChange={(e) => setSelectedRecipe(e.target.value)}

@@ -7,8 +7,9 @@ export const GET = async function (req: NextRequest) {
     try {
       await connectMongoDB();
       const country = await Country.find();
-      
-      if (country) return new NextResponse(JSON.stringify(country), { status: 200 });
+
+      if (country)
+        return new NextResponse(JSON.stringify(country), { status: 200 });
     } catch (error) {
       return new NextResponse(
         "Error in fetching FOOD PREF in loadDietPref/route.ts: !!!!!!" + error,

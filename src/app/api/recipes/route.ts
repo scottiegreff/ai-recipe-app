@@ -7,7 +7,8 @@ export const GET = async function (req: NextRequest) {
     try {
       await connectMongoDB();
       const recipe = await Recipe.find();
-      if (recipe) return new NextResponse(JSON.stringify(recipe), { status: 200 });
+      if (recipe)
+        return new NextResponse(JSON.stringify(recipe), { status: 200 });
     } catch (error) {
       return new NextResponse(
         "Error in fetching RECIPES in recipes/route.ts: !!!!!!" + error,
@@ -34,5 +35,3 @@ export const POST = async function (req: NextRequest, res: NextResponse) {
     }
   }
 };
-
-
