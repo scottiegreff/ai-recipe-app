@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import CardData from "../types/CardData";
 
 export default function SelectionCard({
@@ -22,9 +22,14 @@ export default function SelectionCard({
     }
   }, []);
 
-  function handleClick(parent: string, name: string) {
-    onChildClick(parent, name);
+  function handleClick(parent: string, gptValue: string) {
+    onChildClick(parent, gptValue);
   }
+
+  const [activeButton, setActiveButton] = useState(null);
+  useEffect(() => {
+    console.log("ACTIVE BUTTON: ", activeButton);
+  }, [activeButton]);
 
   return (
     <>
@@ -38,33 +43,34 @@ export default function SelectionCard({
             return (
               <div
                 key={key}
-                className="m-5 bg-white border rounded rounded-b-2xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-[1.01] active:scale-[1.0] active:shadow-lg active:rounded-t-none"
-                style={{
-                  width: 200,
-                  height: 225,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
+                className="flex flex-col items-center justify-center w-[15%] h-[15%] m-5 rounded-full shadow-md transition-transform duration-200 ease-in-out transform hover:scale-[1.01] active:scale-[1.0] active:shadow-lg"
               >
                 <button
-                  className="p-3"
+                  key={key}
+                  className={`relative inline-block ${
+                    activeButton === items[key]
+                      ? "border-2 border-slate-600 rounded-full"
+                      : "border-none"
+                  }`}
                   value={items[key].name}
-                  onClick={() =>
-                    handleClick(items[key].parent, items[key].name)
-                  }
+                  onClick={() => {
+                    setActiveButton(items[key]);
+                    handleClick(items[key].parent, items[key].gptValue);
+                  }}
                 >
                   <Image
+                    key={key}
+                    width={500}
+                    height={500}
                     src={`/${items[key].image}.jpg`}
-                    width={175}
-                    height={175}
+                    className="w-full h-auto block shadow-lg rounded-full opacity-30 transition-opacity duration-300"
                     alt={`${items[key].name}`}
                     priority={true}
-                    className="shadow-lg rounded-3xl"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center text-4xl text-slate-900 font-thin">
+                    {items[key].name}
+                  </div>
                 </button>
-                <p className="mb-5 font-light">{items[key].name}</p>
               </div>
             );
           })}

@@ -11,7 +11,7 @@ export const GET = async function (req: NextRequest) {
       if (flag) return new NextResponse(JSON.stringify(flag), { status: 200 });
     } catch (error) {
       return new NextResponse(
-        "Error in fetching RECIPES in flags/route.ts: !!!!!!" + error,
+        "Error in fetching RECIPES in flags/route.ts: " + error,
         { status: 500 }
       );
     }
@@ -29,7 +29,7 @@ export const GET = async function (req: NextRequest) {
 //       return new NextResponse("POST request received", { status: 200 });
 //     } catch (error) {
 //       return new NextResponse(
-//         "Error in POSTING RECIPES in flags/route.ts: !!!!!!" + error,
+//         "Error in POSTING RECIPES in flags/route.ts: " + error,
 //         { status: 500 }
 //       );
 //     }

@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
 import React from "react";
 import { notFound } from "next/navigation";
-import ChatGPT from "./components/ChatGPT";
 import Controller from "./components/Controller";
 
 import ResponseData from "./types/ResponseData";
@@ -30,11 +29,16 @@ export default async function Home() {
     if (!prepTimeRes) return notFound();
     const prepTimeData = await prepTimeRes.json();
 
+    const nutritionRes = await fetch("http://localhost:3000/api/nutrition");
+    if (!nutritionRes) return notFound();
+    const nutritionData = await nutritionRes.json();
+
     const responseData = {
       mealTimeData,
       restrictionData,
       countryFlagData,
       prepTimeData,
+      nutritionData,
     };
     return responseData;
   }
@@ -43,15 +47,9 @@ export default async function Home() {
 
   return (
     <>
-      <div className="mx-10 my-20">
+      <div className="mx-10 my-10 flex-col justify-center items center">
         {/* <h1 className="text-6xl font-bold">Selections</h1> */}
         <Controller onLoadData={onLoadData} />
-      </div>
-
-      <div className="flex flex-col min-h-50 items-center justify-between p-24"></div>
-      <div className="bg-slate-800 p-3 w-[800px] rounded-md text-white">
-        <h2 className="text-2x">ChatGPT Streaming Chat App</h2>
-        <ChatGPT />
       </div>
     </>
   );

@@ -5,5 +5,6 @@ type ResponseData = {
   restrictionData: CardData;
   countryFlagData: CardData;
   prepTimeData: CardData;
+  nutritionData: CardData;
 };
 export default ResponseData;

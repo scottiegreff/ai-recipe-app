@@ -40,7 +40,7 @@ function AuthButton() {
       </div>
       <button
         onClick={() => signIn()}
-        className="border-black border px-4 py-1 rounded-full shadow-md  transition-transform transform ease-in duration-500 hover:rounded-lg hover:scale-105"
+        className="border-black border px-4 py-1 rounded-full shadow-md  transition-transform transform ease-in duration-200 hover:rounded-lg hover:scale-105"
       >
         Sign in
       </button>
@@ -94,38 +94,6 @@ export default function NavMenu() {
           <AuthButton />
         </div>
       </div>
-
-      {/* <div>
-        <AuthButton />
-        <hr className="my-4" />
-        <ul>
-          <Link href="/">
-            <li className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
-              Home
-            </li>
-          </Link>
-          <Link href="/protected">
-            <li className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
-              Protected Route
-            </li>
-          </Link>
-          <Link href="/serverAction">
-            <li className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
-              Server Action
-            </li>
-          </Link>
-          <Link href="/apiFromClient">
-            <li className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
-              API From Client
-            </li>
-          </Link>
-          <Link href="/apiFromServer">
-            <li className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}>
-              API From Server
-            </li>
-          </Link>
-        </ul>
-      </div> */}
     </>
   );
 }

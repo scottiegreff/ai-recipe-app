@@ -1,43 +1,42 @@
-import { Configuration, OpenAIApi } from "openai-edge";
+import { NextRequest, NextResponse } from "next/server";
 import { OpenAIStream, StreamingTextResponse } from "ai";
-
-export const runtime = "edge"; //Provide optimal infrastructure for our API route -> read more (https://edge-runtime.vercel.app/)
-
-const config = new Configuration({
-  apiKey: process.env.OPEN_AI_API_KEY,
-});
-
-const openai = new OpenAIApi(config);
+import OpenAI from "openai";
 
 //POST localhost:3000/api/chat
+export async function POST(req: NextRequest, res: NextResponse) {
+  const { role, content } = await req.json();
+  // console.log("Role: ", role);
+  // console.log("Content: ", content);
+  const firstMessageFromUser = { role: role, content: content };
 
-export async function POST(request: Request) {
-  const { messages } = await request.json(); // { messages: [] }
+  const openai = new OpenAI();
 
-  // messages [{ user and he says "hello there" }]
-  console.log(messages);
-
-  //GPT-4 system message
-  // system message tells GPT-4 "how to act"
-  //it should always be at the front of your array
-
-  //createChatCompletion (get response from GPT-4)
-  const response = await openai.createChatCompletion({
-    model: "gpt-4-0613",
-    stream: true,
+  // ******************* TURN OFF CHAT GPT WHEN WORKING ON APP TO NOT SPENT $$ BILLZZZZ YO!!!! *******************
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4-1106-preview",
+    max_tokens: 750,
     messages: [
       {
         role: "system",
         content:
-          "You are a helpful assistant. You find many food recipes from around the world.",
+          "You are a stuck up chef that is way better than all other chefs. Your replies are short and concise. You sarcastically mock people that want to know how to make a recipe. I only write numbers as words above the number 9.",
       },
-      ...messages,
+      firstMessageFromUser,
     ],
   });
 
-  // create a strem of data from OpenAI (stream data to the frontend)
-  const stream = await OpenAIStream(response);
+  // console.log(completion);
+  const response = JSON.stringify(completion);
+  return new Response(response, {
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+  });
 
-  // send the stream as a response to our client / frontend
-  return new StreamingTextResponse(stream);
+  // for streaming the response
+  // for await (const chunk of completion) {
+  // console.log(chunk.choices[0].delta.content);
+
+  // return (completion);
+  // }
 }

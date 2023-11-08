@@ -11,7 +11,7 @@ export const GET = async function (req: NextRequest) {
         return new NextResponse(JSON.stringify(prepTime), { status: 200 });
     } catch (error) {
       return new NextResponse(
-        "Error in fetching FOOD PREF in loadDietPref/route.ts: !!!!!!" + error,
+        "Error in fetching FOOD PREF in loadDietPref/route.ts: " + error,
         { status: 500 }
       );
     }

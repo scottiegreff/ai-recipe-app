@@ -11,7 +11,7 @@ export const GET = async function (req: NextRequest) {
         return new NextResponse(JSON.stringify(recipe), { status: 200 });
     } catch (error) {
       return new NextResponse(
-        "Error in fetching RECIPES in recipes/route.ts: !!!!!!" + error,
+        "Error in fetching RECIPES in recipes/route.ts: " + error,
         { status: 500 }
       );
     }
@@ -25,11 +25,13 @@ export const POST = async function (req: NextRequest, res: NextResponse) {
       const { name } = body;
       await connectMongoDB();
       const recipe = await Recipe.create({ name });
-      console.log("Recipe:", recipe);
-      return new NextResponse("POST request received", { status: 200 });
+      if (recipe) {
+        console.log("Recipe:", recipe);
+        return new NextResponse("POST request received", { status: 200 });
+      }
     } catch (error) {
       return new NextResponse(
-        "Error in POSTING RECIPES in recipes/route.ts: !!!!!!" + error,
+        "Error in POSTING RECIPES in recipes/route.ts: " + error,
         { status: 500 }
       );
     }

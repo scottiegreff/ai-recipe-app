@@ -12,7 +12,7 @@ export const GET = async function (req: NextRequest) {
       }
     } catch (error) {
       return new NextResponse(
-        "Error in fetching MEALTIMES in mealTimes/route.ts: !!!!!!" + error,
+        "Error in fetching MEALTIMES in mealTimes/route.ts: " + error,
         { status: 500 }
       );
     }

@@ -11,7 +11,7 @@ const firebaseConfig = {
   storageBucket: "ai-recipe-app-939dd.appspot.com",
   messagingSenderId: "339920849405",
   appId: "1:339920849405:web:6418d103175510e055f194",
-  measurementId: "G-KQZRPQF31W"
+  measurementId: "G-KQZRPQF31W",
 };
 
 // Initialize Firebase
