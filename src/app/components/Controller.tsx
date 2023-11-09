@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ResponseData from "../types/ResponseData";
 import SelectionCard from "./SelectionCards";
 import Accordion from "./Accordion";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 import ChatGPT from "./ChatGPT";
 

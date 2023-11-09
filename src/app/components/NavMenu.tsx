@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { FaUserAlt } from "react-icons/fa";
@@ -50,6 +51,7 @@ function AuthButton() {
 
 export default function NavMenu() {
   const pathname = usePathname();
+  const { data: session } = useSession();
   return (
     <>
       {/* Nav Container */}
@@ -66,12 +68,17 @@ export default function NavMenu() {
         <div className="flex justify-between items-center w-100">
           {/* main nav here */}
           <Link
-            href="/protected"
+            href="/users"
             className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}
+            onClick={() =>
+              !session
+                ? alert("Please use the SIGN IN button and become a MEMBER")
+                : ""
+            }
           >
-            Protected Route
+            MEMBERS
           </Link>
-          <Link
+          {/* <Link
             href="/serverAction"
             className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}
           >
@@ -88,7 +95,7 @@ export default function NavMenu() {
             className={pathname === "/" ? ACTIVE_ROUTE : INACTIVE_ROUTE}
           >
             API From Server
-          </Link>
+          </Link> */}
 
           {/* sign in and out button here with avatar */}
           <AuthButton />

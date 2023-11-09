@@ -19,7 +19,15 @@ const config: Config = {
 
   theme: {
     extend: {
-      backgroundImage: {},
+      // keyframes: {
+      //   "spin-scale-down": {
+      //     "0%": { transform: "rotate(0deg) scale(1)" },
+      //     "100%": { transform: "rotate(860deg) scale(0.01)" },
+      //   },
+      // },
+      // animation: {
+      //   "spin-scale-down-once": "spin-scale-down 3s linear 1",
+      // },
     },
   },
 };
