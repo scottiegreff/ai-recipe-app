@@ -34,7 +34,7 @@ export default function ChatGPT({
     {
       role: "system",
       content:
-        "You are a stuck up chef that is better than all other chefs. You like to mock others. However, you give clear step-by-step instruction concerning ingredients and methods for your recipes. Your replies are short and concise.",
+        "You are a stuck up chef amd like to mock others. However, when once you do give a recipe you give technical instructions concerning ingredients and methods. Once in a blue moon, you will give a little bit of history lesson on one of the ingredients.",
     },
   ]);
   // console.log("CONVERSATION HISTORY: ", conversationHistory);
@@ -116,7 +116,7 @@ export default function ChatGPT({
         <>
           <div className="flex justify-center items-center">
             <button
-              className="my-20 p-2 bg-black text-white rounded-3xl text-2xl font-md px-[5%] shadow-2xl active:scale-[.99] active:shadow-none transform transition duration-150 hover:bg-gray-900"
+              className="my-20 p-2 bg-black text-white rounded-3xl text-lg font-light px-[5%] shadow-2xl active:scale-[.99] active:shadow-none transform transition duration-150 hover:bg-gray-900"
               onClick={handleAPISubmit}
             >
               GET RECIPE IDEAS
@@ -127,13 +127,13 @@ export default function ChatGPT({
         <>
           {isLoading ? (
             <>
-              <p className="mt-10 text-left p-4 bg-white text-2xl font-light">
+              <p className="mt-10 text-left p-4 bg-white text-xl font-light">
                 Loading the BEST RECIPE GENERATOR 9000...
               </p>
               <svg
-                className="h-[15vh] w-[15vw] animate-spin mx-auto mt-10 mb-[20vh]"
-                width={700}
-                height={700}
+                className="h-[4vh] w-[4vw] animate-spin mx-auto mt-10 mb-[20vh]"
+                width={300}
+                height={300}
                 version="1.1"
                 viewBox="0 0 700 700"
                 preserveAspectRatio="xMidYMid meet"
@@ -147,7 +147,7 @@ export default function ChatGPT({
             </>
           ) : (
             <>
-              <div className="mt-10 mb-[20vh] p-4 bg-white text-2xl font-md">
+              <div className="mt-10 mb-[20vh] p-4 bg-white text-xl font-md">
                 <ul className="mt-10 font-light">
                   {splitArray?.map((item, index) => {
                     // Check if 'item' is a number using the regex
@@ -173,15 +173,15 @@ export default function ChatGPT({
               <div className="flex flex-col justify-center items-center mb-[20vh]">
                 <textarea
                   name="message"
-                  className="border rounded-xl text-center border-black h-10 p-1 mb-5 text-xl"
-                  placeholder="Enter recipe #"
+                  className="border rounded-xl text-center border-black h-10 w-[50vw] p-1 mb-5 text-xl"
+                  placeholder="Enter Recipe # or Recipe Questions"
                   onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
                     setCurrentContent(event.target.value)
                   }
                 ></textarea>
 
                 <button
-                  className="p-2 bg-black text-white rounded-3xl text-2xl font-md px-[5%] shadow-2xl active:scale-[.99] active:shadow-none transform transition duration-150 hover:bg-gray-900"
+                  className="p-2 bg-black text-white rounded-3xl text-md font-md px-[5%] shadow-2xl active:scale-[.99] active:shadow-none transform transition duration-150 hover:bg-gray-900"
                   onClick={handleAPISubmit}
                 >
                   GET RECIPE

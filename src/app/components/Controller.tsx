@@ -103,10 +103,10 @@ export default function Controller({
       <hr />
 
       {
-      userDietPrefArr[0] === "" ||
-      userDietPrefArr[1] === "" ||
-      userDietPrefArr[2] === "" ||
-      userDietPrefArr[3] === "" ||
+      // userDietPrefArr[0] === "" ||
+      // userDietPrefArr[1] === "" ||
+      // userDietPrefArr[2] === "" ||
+      // userDietPrefArr[3] === "" ||
       userDietPrefArr[4] === "" 
       ? (
         <p className="mt-7 text-left p-4 bg-white text-2xl font-light">

@@ -22,7 +22,7 @@ function AuthButton() {
         <img
           src={profileImg ?? ""}
           alt="Your Profile Picture"
-          className="w-[50px] h-[50px] rounded-full mx-3"
+          className="w-[50px] h-[50px] rounded-full mx-5"
         />
 
         <button

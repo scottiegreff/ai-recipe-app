@@ -13,6 +13,7 @@ export default async function Users() {
     redirect("/");
   }
   console.log("SESSION", session);
+  
 
   async function getOnLoadData(): Promise<ResponseData> {
     const mealTimeRes = await fetch("http://localhost:3000/api/mealTimes");
@@ -53,7 +54,7 @@ export default async function Users() {
 
   return (
     <>
-      <h1 className="text-center mt-5 p-4 bg-white text-sm font-light">
+      <h1 className="text-center mt-5 p-4 bg-white text-xs font-light">
         WELCOME TO THE MEMBERS PAGE
       </h1>
       <div className="flex justify-center items-center">
