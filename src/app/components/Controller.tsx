@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 import ChatGPT from "./ChatGPT";
 
 const gptTempArray: string[] = new Array(5).fill("");
-let gptArray: string[] = new Array(5).fill("");
+let userDietPrefArr: string[] = new Array(5).fill("");
 
 export default function Controller({
   onLoadData,
@@ -24,48 +24,48 @@ export default function Controller({
   const nutritionData = onLoadData.nutritionData;
 
   const [parent, setParent] = useState<string | null>();
-  const [gptValue, setGPTValue] = useState<string | null>();
+  const [userDietPref, setUserDietPref] = useState<string | null>();
 
-  function handleChildClick(parent: string | null, gptValue: string | null) {
+  function handleChildClick(parent: string | null, userDietPref: string | null) {
     setParent(parent);
-    setGPTValue(gptValue);
-    if (parent === "mealTime" && gptValue) {
-      gptTempArray[0] = gptValue;
-      gptArray = [
+    setUserDietPref(userDietPref);
+    if (parent === "mealTime" && userDietPref) {
+      gptTempArray[0] = userDietPref;
+      userDietPrefArr = [
         ...gptTempArray.slice(0, 0),
-        gptValue,
+        userDietPref,
         ...gptTempArray.slice(1),
       ];
     }
-    if (parent === "restriction" && gptValue) {
-      gptTempArray[1] = gptValue;
-      gptArray = [
+    if (parent === "restriction" && userDietPref) {
+      gptTempArray[1] = userDietPref;
+      userDietPrefArr = [
         ...gptTempArray.slice(0, 1),
-        gptValue,
+        userDietPref,
         ...gptTempArray.slice(2),
       ];
     }
-    if (parent === "country" && gptValue) {
-      gptTempArray[2] = gptValue;
-      gptArray = [
+    if (parent === "country" && userDietPref) {
+      gptTempArray[2] = userDietPref;
+      userDietPrefArr = [
         ...gptTempArray.slice(0, 2),
-        gptValue,
+        userDietPref,
         ...gptTempArray.slice(3),
       ];
     }
-    if (parent === "prepTime" && gptValue) {
-      gptTempArray[3] = gptValue;
-      gptArray = [
+    if (parent === "prepTime" && userDietPref) {
+      gptTempArray[3] = userDietPref;
+      userDietPrefArr = [
         ...gptTempArray.slice(0, 3),
-        gptValue,
+        userDietPref,
         ...gptTempArray.slice(4),
       ];
     }
-    if (parent === "nutrition" && gptValue) {
-      gptTempArray[4] = gptValue;
-      gptArray = [
+    if (parent === "nutrition" && userDietPref) {
+      gptTempArray[4] = userDietPref;
+      userDietPrefArr = [
         ...gptTempArray.slice(0, 4),
-        gptValue,
+        userDietPref,
         ...gptTempArray.slice(5),
       ];
     }
@@ -102,17 +102,20 @@ export default function Controller({
       </Accordion>
       <hr />
 
-      {gptArray[0] === "" ||
-      gptArray[1] === "" ||
-      gptArray[2] === "" ||
-      gptArray[3] === "" ||
-      gptArray[4] === "" ? (
+      {
+      userDietPrefArr[0] === "" ||
+      userDietPrefArr[1] === "" ||
+      userDietPrefArr[2] === "" ||
+      userDietPrefArr[3] === "" ||
+      userDietPrefArr[4] === "" 
+      ? (
         <p className="mt-7 text-left p-4 bg-white text-2xl font-light">
           * Please input your preferences...
         </p>
       ) : (
         <>
-          <ChatGPT gptArray={gptArray} />
+       
+          <ChatGPT userDietPrefArr={userDietPrefArr} />
         </>
       )}
     </>

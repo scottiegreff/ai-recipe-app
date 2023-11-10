@@ -53,12 +53,12 @@ export default async function Users() {
 
   return (
     <>
-      <h1 className="text-center my-5 p-4 bg-white text-2xl font-light">
+      <h1 className="text-center mt-5 p-4 bg-white text-sm font-light">
         WELCOME TO THE MEMBERS PAGE
       </h1>
       <div className="flex justify-center items-center">
         <button
-          className="mb-10 py-2 px-7 bg-black text-white rounded-3xl text-xl font-md shadow-2xl active:scale-[.99] active:shadow-none transform transition duration-150 hover:bg-gray-900"
+          className="mb-10 py-2 px-7 bg-black text-white rounded-3xl text-md font-md shadow-2xl active:scale-[.99] active:shadow-none transform transition duration-150 hover:bg-gray-900"
           // onClick={handleSubmit}
         >
           GET YOUR SAVED RECIPES
@@ -71,21 +71,3 @@ export default async function Users() {
     </>
   );
 }
-
-// import { redirect } from "next/navigation";
-// import { getServerSession } from "next-auth";
-
-// export default async function ProtectedRoute() {
-//   const session = await getServerSession();
-//   if (!session || !session.user) {
-//     redirect("/api/auth/signin");
-//   }
-
-//   return (
-//     <div className="m-10">
-//       This is a protected route.
-//       <br />
-//       You will only see this if you are authenticated.
-//     </div>
-//   );
-// }

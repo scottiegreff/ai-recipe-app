@@ -28,7 +28,7 @@ export default function SelectionCard({
 
   const [activeButton, setActiveButton] = useState(null);
   useEffect(() => {
-    console.log("ACTIVE BUTTON: ", activeButton);
+    // console.log("User's Input: ", activeButton);
   }, [activeButton]);
 
   return (
