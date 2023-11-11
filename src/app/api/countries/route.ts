@@ -1,4 +1,4 @@
-import connectMongoDB from "../../../../mongoose";
+import connectMongoDB from "../../../../lib/mongoose";
 import Country from "../../models/Country";
 import { NextRequest, NextResponse } from "next/server";
 

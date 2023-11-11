@@ -1,6 +1,6 @@
 "use client";
 import { set } from "mongoose";
-// Import the necessary hooks from React
+import SaveRecipe from "./SaveRecipe";
 import React, { useState, useEffect } from "react";
 
 // Define the interfaces for your types
@@ -186,6 +186,7 @@ export default function ChatGPT({
                 >
                   GET RECIPE
                 </button>
+                {/* <SaveRecipe recipe={message ?? null}/> */}
               </div>
             </>
           )}

@@ -1,4 +1,4 @@
-import connectMongoDB from "../../../../mongoose";
+import connectMongoDB from "../../../../lib/mongoose";
 import Recipe from "../../models/Recipe";
 import { NextRequest, NextResponse } from "next/server";
 

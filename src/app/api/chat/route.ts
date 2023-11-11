@@ -42,7 +42,7 @@ export async function POST(
 
   const data = {
     model: "gpt-4-1106-preview",
-    max_tokens: 750, //750
+    max_tokens: 150, //750
     messages: [...conversationHistory, currentUserInput]
   };
 

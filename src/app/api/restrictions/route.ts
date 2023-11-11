@@ -1,4 +1,4 @@
-import connectMongoDB from "../../../../mongoose";
+import connectMongoDB from "../../../../lib/mongoose";
 import Restriction from "../../models/Restriction";
 import { NextRequest, NextResponse } from "next/server";
 
