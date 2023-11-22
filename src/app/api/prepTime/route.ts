@@ -1,4 +1,4 @@
-import connectMongoDB from "../../../../lib/mongoose";
+import connectMongoDB from "../../../utils/mongoose";
 import PrepTime from "../../models/PrepTime";
 import { NextRequest, NextResponse } from "next/server";
 

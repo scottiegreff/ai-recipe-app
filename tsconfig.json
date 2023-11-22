@@ -31,8 +31,9 @@
     ".next/types/**/*.ts",
     "tailwind.config.ts",
     "src/app/home/page.tsx",
-    "src/app/api/auth/[...nextauth]/lib/mongobd.js",
-    "mongodb.js"
-, "src/app/api/auth/[...nextauth]/route.js"  ],
+    "src/app/api/auth/[...nextauth]/lib/mongobd.ts",
+    "mongodb.js",
+    "src/app/api/auth/[...nextauth]/route.ts"
+  ],
   "exclude": ["node_modules"]
 }

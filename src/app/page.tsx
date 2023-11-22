@@ -1,40 +1,43 @@
-import { getServerSession } from "next-auth";
+// import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { notFound } from "next/navigation";
 import Controller from "./components/Controller";
 import logo from "../../public/fork_knife_logo.svg";
 
+
 import ResponseData from "./types/ResponseData";
 
 export default async function Home() {
-  const session = await getServerSession();
-  if (session) {
-    redirect("/users");
-  }
+  
+  // const session = await getServerSession();
+  // if (session) {
+  //   redirect("/users");
+  // }
 
   async function getOnLoadData(): Promise<ResponseData> {
-    const mealTimeRes = await fetch("http://localhost:3000/api/mealTimes");
+    
+    const mealTimeRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/mealTimes`);
     if (!mealTimeRes) return notFound();
     const mealTimeData = await mealTimeRes.json();
 
     const restrictionRes = await fetch(
-      "http://localhost:3000/api/restrictions"
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/restrictions`
     );
     if (!restrictionRes) return notFound();
     const restrictionData = await restrictionRes.json();
 
     const countryFlagRes = await fetch(
-      "http://localhost:3000/api/countryFlags"
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/countryFlags`
     );
     if (!countryFlagRes) return notFound();
     const countryFlagData = await countryFlagRes.json();
 
-    const prepTimeRes = await fetch("http://localhost:3000/api/prepTime");
+    const prepTimeRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/prepTime`);
     if (!prepTimeRes) return notFound();
     const prepTimeData = await prepTimeRes.json();
 
-    const nutritionRes = await fetch("http://localhost:3000/api/nutrition");
+    const nutritionRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/nutrition`);
     if (!nutritionRes) return notFound();
     const nutritionData = await nutritionRes.json();
 
@@ -52,7 +55,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="mx-10 my-10 flex-col justify-center items center">
+      <div className="">
         {/* <svg
           className="m-auto animate-spin-scale-down-once h-100 w-100 text-white"
           xmlns="http://www.w3.org/2000/svg"

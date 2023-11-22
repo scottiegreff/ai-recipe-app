@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import { useState, useEffect, use } from "react";
 import CardData from "../types/CardData";
@@ -23,6 +24,8 @@ export default function SelectionCard({
   }, []);
 
   function handleClick(parent: string, gptValue: string) {
+    // console.log("PARENT: ", parent);
+    // console.log("GPT VALUE: ", gptValue);
     onChildClick(parent, gptValue);
   }
 
@@ -43,13 +46,13 @@ export default function SelectionCard({
             return (
               <div
                 key={key}
-                className="flex flex-col items-center justify-center w-[15%] h-[15%] m-5 rounded-full shadow-md transition-transform duration-200 ease-in-out transform hover:scale-[1.01] active:scale-[1.0] active:shadow-lg"
+                className="flex flex-col items-center justify-center w-[15%] h-[15%] m-5 rounded-full shadow-md transition-transform duration-200 ease-in-out transform hover:scale-[1.04] active:scale-[1.0] active:shadow-lg"
               >
                 <button
                   key={key}
                   className={`relative inline-block ${
                     activeButton === items[key]
-                      ? "border-2 border-slate-600 rounded-full"
+                      ? "border-[4px] border-slate-600 rounded-full"
                       : "border-none"
                   }`}
                   value={items[key].name}
@@ -58,16 +61,16 @@ export default function SelectionCard({
                     handleClick(items[key].parent, items[key].gptValue);
                   }}
                 >
-                  <Image
+                  <img
                     key={key}
-                    width={500}
-                    height={500}
+                    width={0}
+                    height={0}
                     src={`/${items[key].image}.jpg`}
                     className="w-full h-auto block shadow-lg rounded-full opacity-30 transition-opacity duration-300"
                     alt={`${items[key].name}`}
-                    priority={true}
+                    // priority={true}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center text-4xl text-slate-900 font-thin">
+                  <div className="absolute inset-0 flex items-center justify-center text-[1rem] md:text-[2rem] text-slate-900 font-thin">
                     {items[key].name}
                   </div>
                 </button>

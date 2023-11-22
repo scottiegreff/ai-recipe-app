@@ -21,7 +21,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
   return (
     <div className="border-black rounded-lg overflow-hidden py-7">
       <button
-        className="w-full text-left p-4 bg-white text-6xl font-bold"
+        className="w-full text-left p-4 bg-white text-3xl lg:text-5xl xl:text-6xl font-bold"
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}

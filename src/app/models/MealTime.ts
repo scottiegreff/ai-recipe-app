@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const mealTimeSchema: Schema = new mongoose.Schema({
-  _id: { type: String },
+
   gptValue: { type: String },
   name: { type: String },
   image: { type: String },

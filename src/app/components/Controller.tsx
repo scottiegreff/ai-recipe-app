@@ -4,8 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import ResponseData from "../types/ResponseData";
 import SelectionCard from "./SelectionCards";
 import Accordion from "./Accordion";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 
 import ChatGPT from "./ChatGPT";
 
@@ -26,7 +24,10 @@ export default function Controller({
   const [parent, setParent] = useState<string | null>();
   const [userDietPref, setUserDietPref] = useState<string | null>();
 
-  function handleChildClick(parent: string | null, userDietPref: string | null) {
+  function handleChildClick(
+    parent: string | null,
+    userDietPref: string | null
+  ) {
     setParent(parent);
     setUserDietPref(userDietPref);
     if (parent === "mealTime" && userDietPref) {
@@ -101,23 +102,23 @@ export default function Controller({
         <SelectionCard items={nutritionData} onChildClick={handleChildClick} />
       </Accordion>
       <hr />
-
+      {/* If  all prefrences are not selected show: Please input your preferences*/}
       {
-      // userDietPrefArr[0] === "" ||
-      // userDietPrefArr[1] === "" ||
-      // userDietPrefArr[2] === "" ||
-      // userDietPrefArr[3] === "" ||
-      userDietPrefArr[4] === "" 
-      ? (
-        <p className="mt-7 text-left p-4 bg-white text-2xl font-light">
-          * Please input your preferences...
-        </p>
-      ) : (
-        <>
-       
-          <ChatGPT userDietPrefArr={userDietPrefArr} />
-        </>
-      )}
+        userDietPrefArr[0] === "" ||
+        userDietPrefArr[1] === "" ||
+        userDietPrefArr[2] === "" ||
+        userDietPrefArr[3] === "" ||
+        userDietPrefArr[4] === "" ? (
+          <p className="mt-7 text-left p-4 bg-white text-lg md:text-2xl font-light">
+            * Please input your preferences...
+          </p>
+        ) : (
+          // Show the GET RECIPE IDEAS button
+          <>
+            <ChatGPT userDietPrefArr={userDietPrefArr} />
+          </>
+        )
+      }
     </>
   );
 }
